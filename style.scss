@@ -1,7 +1,11 @@
-@import './styles/base.scss';
+@import "./styles/base.scss";
+
+:root {
+  --primary-color: #fb2324;
+}
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 5vmin;
   background-color: #f4f4f4;
 }
@@ -27,5 +31,19 @@ ul {
   height: 5vmin;
   width: 5vmin;
   border-radius: 50%;
-  background: radial-gradient(circle at bottom right, #fb2324, #fe932a);
+  background: radial-gradient(
+    circle at bottom right,
+    var(--primary-color),
+    #fe932a
+  );
+  // animation: slide-right 1s linear infinite;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50vw);
+  }
 }
