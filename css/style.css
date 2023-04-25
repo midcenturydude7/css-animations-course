@@ -44,101 +44,52 @@ button {
   }
 }
 :root {
-  --color-gray: #8c97b7;
-  --color-blue: #1c38f1;
-  --color-green: #1fcdb0;
-  --input-height: 3rem;
-  --transition-duration: 0.3s;
-  --transition-easing: cubic-bezier(0.5, 0, 0.5, 1);
-  --animation-duration: 0.8s;
+  --primary-bg-color: #f4f4f4;
+  --primary-ball-color: #fb2324;
+  --duration: 1s;
+  --easing: cubic-bezier(0.5, 0, 0.5, 1);
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f9fbff;
+  font-family: "Open Sans", sans-serif;
+  padding: 5vmin;
+  background-color: var(--primary-bg-color);
 }
 
-.ui-form {
-  background: #fff;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  border-radius: 0.25rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr;
-  grid-column-gap: 1rem;
-  grid-template-areas: "input button";
-  transition: all var(--transition-duration) var(--transition-easing);
-  will-change: transform;
-  --color: var(--color-gray);
-}
-.ui-form:focus-within {
-  --color: var(--color-blue);
-}
-.ui-form > .ui-input,
-.ui-form > .ui-button {
-  animation-name: slide-up;
-  animation-fill-mode: both;
-  animation-timing-function: var(--transition-easing);
-  animation-delay: calc(var(--animation-duration) / 2);
-}
-.ui-form > .ui-input {
-  animation-duration: 0.5s;
-}
-.ui-form > .ui-button {
-  animation-duration: 0.6s;
+a {
+  color: blue;
 }
 
-.ui-input {
-  grid-area: input;
-  padding: 0 1rem;
-  height: var(--input-height);
-  border: 2px solid var(--color);
-  border-radius: 0.25rem;
-  outline: none;
-  transition: inherit;
+h1 {
+  margin: 0;
+  color: var(--primary-ball-color);
+  transition: all 0.3s;
+}
+h1:hover {
+  font-size: 5vw;
 }
 
-.ui-button {
-  grid-area: button;
-  border: none;
-  padding: 0 1rem;
-  color: white;
+small {
+  text-transform: uppercase;
   font-weight: bold;
-  border-radius: 0.25rem;
-  height: var(--input-height);
-  background-color: var(--color);
-  transition: inherit;
 }
 
-[data-show]:not([data-active]) {
-  display: none;
+ul {
+  margin: 1rem 0;
 }
 
-.ui-form {
-  overflow: hidden;
+.ball {
+  height: 5vmin;
+  width: 5vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle at bottom right, var(--primary-ball-color), #fe932a);
 }
 
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
+@keyframes slide-right {
+  0% {
+    transform: translateX(0);
   }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes shake {
-  20%, 40%, 60%, 80% {
-    transform: translateX(1%);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translateX(-1%);
-  }
-  from, to {
-    transform: none;
+  100% {
+    transform: translateX(50vw);
   }
 }/*# sourceMappingURL=style.css.map */

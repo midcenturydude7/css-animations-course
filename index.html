@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <link rel="stylesheet" href="style.scss" />
   </head>
   <body>
@@ -29,5 +28,10 @@
       </ul>
       <div class="ball"></div>
     </div>
+    <script>
+      document.body.addEventListener("click", () => {
+        document.body.style.setProperty("--primary-bg-color", "#000");
+      });
+    </script>
   </body>
 </html>

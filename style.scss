@@ -1,13 +1,16 @@
 @import "./styles/base.scss";
 
 :root {
-  --primary-color: #fb2324;
+  --primary-bg-color: #f4f4f4;
+  --primary-ball-color: #fb2324;
+  --duration: 1s;
+  --easing: cubic-bezier(0.5, 0, 0.5, 1);
 }
 
 body {
   font-family: "Open Sans", sans-serif;
   padding: 5vmin;
-  background-color: #f4f4f4;
+  background-color: var(--primary-bg-color);
 }
 
 a {
@@ -16,6 +19,12 @@ a {
 
 h1 {
   margin: 0;
+  color: var(--primary-ball-color);
+  transition: all 0.3s;
+
+  &:hover {
+    font-size: 5vw;
+  }
 }
 
 small {
@@ -33,10 +42,10 @@ ul {
   border-radius: 50%;
   background: radial-gradient(
     circle at bottom right,
-    var(--primary-color),
+    var(--primary-ball-color),
     #fe932a
   );
-  // animation: slide-right 1s linear infinite;
+  // animation: slide-right var(--duration) var(--easing) infinite;
 }
 
 @keyframes slide-right {

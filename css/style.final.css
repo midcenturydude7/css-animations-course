@@ -43,83 +43,79 @@ button {
     transition-duration: 0s !important;
   }
 }
-:root {
-  --color-gray: #8c97b7;
-  --color-blue: #1c38f1;
-  --color-green: #1fcdb0;
-  --input-height: 3rem;
-  --transition-duration: 0.3s;
-  --transition-easing: cubic-bezier(0.5, 0, 0.5, 1);
-  --animation-duration: 0.8s;
+.circle {
+  height: 5vmin;
+  width: 5vmin;
+  border-radius: 50%;
+  background-color: blue;
+  transform: translate(calc(var(--x) * 1px - 50%), calc(var(--y) * 1px - 50%));
+}/*# sourceMappingURL=style.final.css.map */
+  width: 20vw;
+  aspect-ratio: 1;
+  border: 1px solid;
+}
+#app[data-state=collapsed] .ui-content {
+  display: none;
+}
+#app[data-state=expanded] {
+  padding: 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "figure content";
+  aspect-ratio: 2;
+  width: 70vw;
 }
 
-body {
+.ui-content {
+  grid-area: content;
+  animation: content 0.3s 0.3s both;
+}
+
+@keyframes content {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.ui-figure {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f9fbff;
 }
-
-.ui-form {
-  background: #fff;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  border-radius: 0.25rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr;
-  grid-column-gap: 1rem;
-  grid-template-areas: "input button";
-  transition: all var(--transition-duration) var(--transition-easing);
-  will-change: transform;
-  --color: var(--color-gray);
+.ui-figure:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom right, #124269, #309aef);
+  transform-origin: top left;
 }
-.ui-form:focus-within {
-  --color: var(--color-blue);
+.ui-figure[data-flip=invert]:before {
+  transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px)) scale(var(--dw), var(--dh));
 }
-.ui-form[data-state=subscribe] {
-  animation: slide-up var(--animation-duration) var(--transition-easing);
+.ui-figure[data-flip=play]:before {
+  transition: transform 0.3s;
+  transform: none;
 }
-.ui-form[data-state=success] {
-  --color: var(--color-green);
-}
-.ui-form[data-state=error] {
-  --color: var(--color-red, red);
-  animation: shake 1s ease;
-}
-.ui-form > .ui-input,
-.ui-form > .ui-button {
-  animation-name: slide-up;
-  animation-fill-mode: both;
-  animation-timing-function: var(--transition-easing);
-  animation-delay: calc(var(--animation-duration) / 2);
-}
-.ui-form > .ui-input {
-  animation-duration: 0.5s;
-}
-.ui-form > .ui-button {
-  animation-duration: 0.6s;
-}
-
-.ui-input {
-  grid-area: input;
-  padding: 0 1rem;
-  height: var(--input-height);
-  border: 2px solid var(--color);
-  border-radius: 0.25rem;
-  outline: none;
-  transition: inherit;
-}
-
-.ui-button {
-  grid-area: button;
-  border: none;
-  padding: 0 1rem;
-  color: white;
+.ui-figure > .ui-caption {
+  font-size: 2rem;
   font-weight: bold;
-  border-radius: 0.25rem;
-  height: var(--input-height);
-  background-color: var(--color);
+  color: white;
+}
+
+[data-flip][data-flip-bg][data-flip=invert]:before, [data-flip]:not([data-flip-bg])[data-flip=invert] {
+  transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px)) scale(var(--dw), var(--dh));
+}
+[data-flip][data-flip-bg][data-flip=play]:before, [data-flip]:not([data-flip-bg])[data-flip=play] {
+  transition: transform 0.3s;
+  transform: none;
+}/*# sourceMappingURL=style.final.css.map */kground-color: var(--color);
   transition: inherit;
 }
 
