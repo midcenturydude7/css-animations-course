@@ -48,6 +48,9 @@ button {
   --color-blue: #1c38f1;
   --color-green: #1fcdb0;
   --input-height: 3rem;
+  --transition-duration: 0.3s;
+  --transition-easing: cubic-bezier(0.5, 0, 0.5, 1);
+  --animation-duration: 0.8s;
 }
 
 body {
@@ -67,10 +70,20 @@ body {
   grid-template-rows: 1fr;
   grid-column-gap: 1rem;
   grid-template-areas: "input button";
+  animation-name: slide-up;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
   --color: var(--color-gray);
 }
 .ui-form:focus-within {
   --color: var(--color-blue);
+}
+.ui-form > .ui-input,
+.ui-form > .ui-button {
+  animation-name: slide-up;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
 }
 
 .ui-input {
@@ -80,8 +93,10 @@ body {
   border: 2px solid var(--color);
   border-radius: 0.25rem;
   outline: none;
-  transition-property: border-color;
-  transition-duration: 0.3s;
+  transition: inherit;
+}
+.ui-input:invalid:not(:focus) {
+  animation: shake 0.5s;
 }
 
 .ui-button {
@@ -93,18 +108,7 @@ body {
   border-radius: 0.25rem;
   height: var(--input-height);
   background-color: var(--color);
-  transition-property: background-color opacity transform;
-  transition-duration: 0.5s;
-  transition-delay: 0.2s;
-  transition-timing-function: linear linear ease-in-out;
-}
-.ui-button:hover {
-  opacity: 0.7;
-  cursor: pointer;
-}
-.ui-button:active {
-  transform: translateY(0.15rem);
-  transition-delay: 0.02s;
+  transition: inherit;
 }
 
 [data-show]:not([data-active]) {
@@ -113,4 +117,28 @@ body {
 
 .ui-form {
   overflow: hidden;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  50%, to {
+    opacity: 1;
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes shake {
+  from, to {
+    transform: none;
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(0.15rem);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-0.15rem);
+  }
 }/*# sourceMappingURL=style.css.map */
