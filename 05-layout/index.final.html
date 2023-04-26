@@ -23,14 +23,14 @@
     </div>
   </body>
   <script>
-    const figureEl = document.querySelector('.ui-figure');
-    const captionEl = document.querySelector('.ui-caption');
-    const appEl = document.querySelector('#app');
+    const figureEl = document.querySelector(".ui-figure");
+    const captionEl = document.querySelector(".ui-caption");
+    const appEl = document.querySelector("#app");
 
-    appEl.addEventListener('click', () => {
+    appEl.addEventListener("click", () => {
       flip(() => {
         app.dataset.state =
-          app.dataset.state === 'collapsed' ? 'expanded' : 'collapsed';
+          app.dataset.state === "collapsed" ? "expanded" : "collapsed";
       }, [figureEl, captionEl]);
     });
 
@@ -80,14 +80,14 @@
           const dw = firstRect.width / lastRect.width;
           const dh = firstRect.height / lastRect.height;
 
-          lastEl.style.setProperty('--dx', dx);
-          lastEl.style.setProperty('--dy', dy);
-          lastEl.style.setProperty('--dw', dw);
-          lastEl.style.setProperty('--dh', dh);
-          lastEl.dataset.flip = 'invert';
+          lastEl.style.setProperty("--dx", dx);
+          lastEl.style.setProperty("--dy", dy);
+          lastEl.style.setProperty("--dw", dw);
+          lastEl.style.setProperty("--dh", dh);
+          lastEl.dataset.flip = "invert";
 
           requestAnimationFrame(() => {
-            lastEl.dataset.flip = 'play';
+            lastEl.dataset.flip = "play";
           });
         });
       });

@@ -64,21 +64,34 @@ body {
     transform-origin: top left;
   }
 
-  // Add invert styles here to :before
-  &[data-flip="invert"] {
+  &[data-flip="invert"]:before {
     transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px))
       scale(var(--dw), var(--dh));
   }
 
-  // Add play styles here to :before
-  &[data-flip="play"] {
-    transform: none;
+  &[data-flip="play"]:before {
     transition: transform 0.3s;
+    transform: none;
   }
 
   > .ui-caption {
     font-size: 2rem;
     font-weight: bold;
     color: white;
+    --duration: 1s;
+  }
+}
+
+[data-flip] {
+  &[data-flip-bg][data-flip="invert"]:before,
+  &:not([data-flip-bg])[data-flip="invert"] {
+    transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px))
+      scale(var(--dw), var(--dh));
+  }
+
+  &[data-flip-bg][data-flip="play"]:before,
+  &:not([data-flip-bg])[data-flip="play"] {
+    transition: transform var(--duration, 0.3s);
+    transform: none;
   }
 }
