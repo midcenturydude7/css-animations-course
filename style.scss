@@ -21,10 +21,6 @@ h1 {
   margin: 0;
   color: var(--primary-ball-color);
   transition: all 0.3s;
-
-  &:hover {
-    font-size: 5vw;
-  }
 }
 
 small {
@@ -39,20 +35,47 @@ ul {
 .ball {
   height: 5vmin;
   width: 5vmin;
+  left: 50vw;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at bottom right,
-    var(--primary-ball-color),
-    #fe932a
-  );
-  // animation: slide-right var(--duration) var(--easing) infinite;
+  background: var(--primary-ball-color);
+  --duration: 1s;
+  --stagger: 0.5s;
+  --interval: calc(var(--duration) - var(--stagger));
+  animation: move-right var(--duration) calc(var(--interval) * var(--i)) both;
+
+  // &:nth-child(2) {
+  //   animation-delay: calc(var(--duration) - var(--stagger));
+  // }
+
+  // &:nth-child(3) {
+  //   animation-delay: calc(var(--duration) * 2 - var(--stagger) * 2);
+  // }
 }
 
-@keyframes slide-right {
-  0% {
-    transform: translateX(0);
+@keyframes move-right {
+  from {
+    transform: none;
   }
-  100% {
-    transform: translateX(50vw);
+
+  to {
+    transform: translateX(25vw);
+  }
+}
+
+@keyframes color-shift {
+  from {
+    background: radial-gradient(
+      circle at bottom right,
+      var(--primary-ball-color),
+      #f57d06
+    );
+  }
+
+  to {
+    background: radial-gradient(
+      circle at bottom right,
+      #9e8a77,
+      var(--primary-ball-color)
+    );
   }
 }
