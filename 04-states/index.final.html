@@ -19,7 +19,7 @@
     </form>
   </body>
   <script>
-    const form = document.querySelector('.ui-form');
+    const form = document.querySelector(".ui-form");
 
     function setState(state) {
       const active = document.querySelectorAll(`[data-active]`);
@@ -34,17 +34,17 @@
         el.dataset.active = true;
       });
 
-      if (state === 'subscribing') {
+      if (state === "subscribing") {
         setTimeout(() => {
           if (Math.random() < 0.9) {
-            setState('error');
+            setState("error");
           } else {
-            setState('success');
+            setState("success");
           }
         }, 2000);
       }
     }
 
-    setState('subscribe');
+    setState("subscribe");
   </script>
 </html>
