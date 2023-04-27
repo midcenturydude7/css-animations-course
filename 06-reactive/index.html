@@ -11,8 +11,15 @@
     <div class="circle"></div>
   </body>
   <script>
-    const circleEl = document.querySelector('.circle');
+    const circleEl = document.querySelector(".circle");
 
-    // ...
+    document.body.addEventListener("pointermove", (e) => {
+      const { clientX, clientY } = e;
+
+      console.log(clientX, clientY);
+
+      circleEl.style.setProperty("--x", clientX);
+      circleEl.style.setProperty("--y", clientY);
+    });
   </script>
 </html>
