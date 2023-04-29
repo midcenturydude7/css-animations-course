@@ -25,8 +25,40 @@ h1 {
   text-align: center;
 }
 
-@keyframes headings {
+h1:first-child {
+  animation: first-heading 4s both;
+}
+
+h1:nth-child(2) {
+  animation: second-heading 4s both;
+}
+
+@keyframes first-heading {
   from {
-    transform: translateY(100%) scale(1.5);
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  }
+  50%,
+  to {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@keyframes second-heading {
+  from,
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes headings {
+  from,
+  50% {
+    transform: translateY(50%) scale(1.5);
+  }
+  to {
+    transform: none;
   }
 }
